@@ -1,0 +1,210 @@
+/* ===========================================
+   BAC Estudio - Landing Page
+   Diseño arquitectónico editorial
+   Solo globales, variables y utilidades
+   =========================================== */
+
+/* fuente inter de google */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* variables: colores, tamaños, espacios */
+:root {
+  /* colores */
+  --color-bg-warm: #FAF8F5;
+  --color-bg-alternate: #F5F3F0;
+  --color-bg-soft: #EDEBE7;
+  --color-text-primary: #6B6B6B;
+  --color-text-title: #3A3A3A;
+  --color-text-light: #8B8986;
+  --color-text-detail: #A8A5A0;
+  --color-border: #DED9D3;
+  --color-accent: #4A4745;
+  
+  /* tipografía */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-base: 17px;
+  --font-size-lg: 20px;
+  --font-size-xl: 28px;
+  --font-size-2xl: 42px;
+  --font-size-3xl: 56px;
+  --font-size-4xl: 80px;
+  --font-size-hero: clamp(64px, 8vw, 120px);
+  
+  /* espacios */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --spacing-xl: 64px;
+  --spacing-2xl: 96px;
+  --spacing-3xl: 128px;
+  
+  /* contenedor */
+  --container-max: 1200px;
+  --container-padding: 24px;
+  
+  /* transiciones */
+  --transition-smooth: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.4s ease-out;
+  --transition-medium: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* reset de estilos del navegador */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a, button, .project-item, .service-item, .team-member {
+  cursor: pointer;
+}
+
+/* focus states */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-text-title);
+  outline-offset: 4px;
+}
+
+::selection {
+  background-color: var(--color-text-title);
+  color: var(--color-bg-warm);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: var(--font-size-base);
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-warm);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* contenedor global */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* títulos */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text-title);
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: var(--spacing-sm);
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+/* secciones */
+section {
+  padding: var(--spacing-3xl) 0;
+}
+
+.section-number {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--color-text-detail);
+  display: block;
+  margin-bottom: var(--spacing-md);
+}
+
+.section-title {
+  font-size: var(--font-size-3xl);
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -1px;
+}
+
+.section-title-large {
+  font-size: var(--font-size-3xl);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: var(--spacing-lg);
+}
+
+.section-intro {
+  text-align: center;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-primary);
+  max-width: 720px;
+  margin: 0 auto var(--spacing-2xl);
+  line-height: 1.8;
+}
+
+.section-line {
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-text-title);
+  margin-bottom: var(--spacing-lg);
+}
+
+.section-description {
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  max-width: 400px;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  :root {
+    --font-size-3xl: 36px;
+    --font-size-4xl: 48px;
+    --font-size-hero: 48px;
+    --spacing-2xl: 64px;
+    --spacing-3xl: 80px;
+  }
+  
+  .section-title-large {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-2xl: 24px;
+    --font-size-3xl: 28px;
+    --font-size-4xl: 36px;
+    --container-padding: 20px;
+  }
+  
+  section {
+    padding: var(--spacing-2xl) 0;
+  }
+  
+  .section-title {
+    font-size: var(--font-size-2xl);
+  }
+}

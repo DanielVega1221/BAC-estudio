@@ -1,0 +1,153 @@
+/* services - arquitectura, ingeniería, etc */
+
+.services {
+  background-color: var(--color-bg-alternate);
+  padding: var(--spacing-3xl) 0;
+  position: relative;
+}
+
+.services::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+}
+
+.services-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-2xl);
+  padding-bottom: var(--spacing-xl);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.services-intro {
+  max-width: 450px;
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background-color: var(--color-border);
+}
+
+.service-item {
+  background-color: var(--color-bg-warm);
+  padding: var(--spacing-2xl);
+  display: flex;
+  gap: var(--spacing-lg);
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.service-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 100%;
+  height: 100%;
+  background-color: #4A4745;
+  transition: right 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+
+.service-item:hover::before {
+  right: 0;
+}
+
+.service-item:hover .service-number,
+.service-item:hover .service-name,
+.service-item:hover .service-text {
+  color: var(--color-bg-warm);
+  position: relative;
+  z-index: 1;
+}
+
+.service-number {
+  font-size: 72px;
+  font-weight: 300;
+  color: var(--color-border);
+  line-height: 1;
+  font-style: italic;
+  flex-shrink: 0;
+  width: 100px;
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.service-item:hover .service-number {
+  transform: scale(1.1) rotate(-3deg);
+  color: var(--color-bg-warm);
+}
+
+.service-content {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.service-name {
+  font-size: var(--font-size-2xl);
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: -0.5px;
+  transition: var(--transition-smooth);
+}
+
+.service-text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-primary);
+  margin: 0;
+  transition: var(--transition-smooth);
+}
+
+/* ajustes responsive */
+@media (max-width: 1024px) {
+  .services-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .services {
+    padding: var(--spacing-2xl) 0;
+  }
+  
+  .services-header {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+  }
+  
+  .services-intro {
+    max-width: 100%;
+  }
+  
+  .service-item {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+  }
+  
+  .service-number {
+    font-size: 48px;
+  }
+}

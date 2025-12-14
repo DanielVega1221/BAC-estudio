@@ -1,0 +1,63 @@
+/* statement - frase editorial grande */
+
+.statement {
+  background-color: var(--color-bg-warm);
+  padding: var(--spacing-3xl) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.statement-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+.statement-content {
+  max-width: 900px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xl);
+}
+
+.statement-line {
+  width: 80px;
+  height: 1px;
+  background-color: var(--color-text-title);
+  transform-origin: center;
+}
+
+.statement-text {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--color-text-title);
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+.statement-emphasis {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-text-light);
+}
+
+/* ajustes responsive */
+@media (max-width: 768px) {
+  .statement {
+    padding: var(--spacing-2xl) 0;
+  }
+  
+  .statement-container {
+    min-height: 40vh;
+  }
+  
+  .statement-text {
+    font-size: 32px;
+  }
+}

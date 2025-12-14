@@ -1,0 +1,197 @@
+BAC ESTUDIO - LANDING PAGE
+guía para entender el proyecto y cómo está armado
+
+=== que es esto ===
+
+landing page para el estudio de arquitectura de fernanda en chilecito. página web moderna, minimalista, que muestra servicios, proyectos y el equipo.
+
+stack:
+- react 19
+- vite
+- framer motion (las animaciones)
+
+
+=== estructura del proyecto ===
+
+src/
+  main.jsx              -> arranca todo
+  App.jsx               -> componente principal que ordena las secciones
+  App.css               -> estilos globales (colores, espacios, variables)
+  index.css             -> reset básico
+
+  components/
+    Intro.jsx/css        -> pantalla de carga inicial con logo
+    Header.jsx/css       -> navbar de arriba (con scroll progress)
+    Hero.jsx/css         -> sección grande de entrada full screen
+    Statement.jsx/css    -> frase editorial ("procesos compartidos")
+    Process.jsx/css      -> cómo trabajamos (4 pasos)
+    Services.jsx/css     -> servicios (arquitectura, ingeniería, etc)
+    Projects.jsx/css     -> grid bento con los proyectos
+    Team.jsx/css         -> equipo con frases en hover
+    Contact.jsx/css      -> formulario y datos de contacto
+    Footer.jsx/css       -> pie de página
+    ProjectModal.jsx/css -> ventana emergente de proyectos
+    BackToTop.jsx/css    -> botón para volver arriba
+
+  assets/
+    logoBAC.png          -> logo del estudio
+
+
+
+=== cómo funciona la página (orden) ===
+
+1. intro (3 segundos)
+   pantalla de carga con logo y líneas que se dibujan, después desaparece
+
+2. header (fixed arriba siempre)
+   navbar con links, logo que te lleva arriba, barra de progreso que crece, links activos según qué sección estás viendo
+
+3. hero (pantalla completa)
+   título grande "espacios que cuentan historias", imágenes con parallax, líneas decorativas que se cruzan, indicador scroll animado
+
+4. statement (frase editorial)
+   "no diseñamos solo espacios. diseñamos procesos compartidos" con línea que crece y texto grande centrado
+
+5. process (cómo trabajamos)
+   4 pasos numerados, título sticky que se queda pegado, cada paso se anima cuando entra
+
+6. services (servicios)
+   grid 2x2 con hover, arquitectura/ingeniería/agrimensura/obra, cards crecen al pasar mouse
+
+7. projects (proyectos)
+   grid bento asimétrico tipo pinterest, filtros arriba, click abre modal, en mobile es columna simple
+
+8. team (equipo)
+   cards horizontales con foto, hover muestra frase personal, click abre modal
+
+9. contact (formulario)
+   form de contacto + info a la izquierda, por ahora solo simula envío (falta backend)
+
+10. footer
+    logo, ubicación, email, links redes, copyright
+
+11. back to top (flotante)
+    botón circular abajo derecha, aparece después de 800px scroll, te sube suave
+
+
+=== features ===
+
+- parallax en hero: imágenes se mueven más lento que el scroll
+- intersection observer: detecta qué sección estás mirando
+- scroll progress bar: ves cuánto falta
+- active navbar states: marca el link actual
+- framer motion: todo entra suave
+- grid bento con filtros: proyectos se reorganizan solos
+- hover quotes en team: frases aparecen al pasar mouse
+- modales con animatePresence: ventanas emergentes suaves
+- back to top: volver arriba desde cualquier lado
+- sticky header: navbar siempre visible
+- responsive completo: funciona en todas las pantallas
+
+
+=== variables importantes (src/App.css) ===
+
+colores:
+--color-bg-warm: #FAF8F5 (beige cálido del fondo)
+--color-text-title: #3A3A3A (gris oscuro títulos)
+--color-text-primary: #6B6B6B (gris medio textos)
+--color-border: #DED9D3 (beige oscuro líneas)
+
+espacios:
+--spacing-xs: 8px
+--spacing-sm: 16px
+--spacing-md: 24px
+--spacing-lg: 48px
+--spacing-xl: 64px
+--spacing-2xl: 96px
+--spacing-3xl: 128px
+
+tipografía:
+todo usa inter de google fonts
+clamp() para tamaños fluidos (responsive automático)
+
+
+=== responsive breakpoints ===
+
+1024px: tablets horizontal, todo sigue en 2 columnas
+768px: tablets vertical, algunas cosas pasan a 1 columna
+480px: móviles, todo 1 columna, textos más chicos
+
+
+
+=== cómo editar contenido ===
+
+textos:
+todos los textos están hardcodeados en los .jsx, buscás el componente y editás directo
+
+imágenes:
+hero: cambiar background de .hero-image-main y .hero-image-accent en hero.css
+projects: cambiar background de cada .project-item en projects.css
+team: cambiar background de cada .member-visual en team.css
+por ahora son gradientes, reemplazar con: background-image: url('ruta')
+
+colores:
+todo se maneja desde las variables en app.css, cambiar un color ahí lo cambia en toda la página
+
+proyectos:
+array "projects" en projects.jsx, agregar/quitar objetos
+cada proyecto tiene: id, title, category, year, location, size
+
+equipo:
+array "team" en team.jsx
+cada miembro tiene: name, role, quote, description
+quote es la frase que aparece en hover
+
+formulario de contacto:
+por ahora solo hace console.log, hay que conectar con backend tipo emailjs o formspree
+
+
+=== detalles técnicos ===
+
+parallax en hero:
+usa useScroll hook de framer motion, usetransform convierte scroll progress en movimiento Y
+las imágenes se mueven 100px mientras la sección sale de vista
+
+intersection observer en header:
+vigila qué sección está en el viewport, threshold: 0.3 (necesita 30% visible)
+rootmargin ajusta la zona de detección, actualiza activesection state y marca el link
+
+scroll progress bar:
+useeffect que escucha scroll, calcula (scrollY / scrollheight total) * 100
+motion.div con scalex animado
+
+grid bento en projects:
+css grid con grid-auto-flow: dense, cada proyecto tiene clase de tamaño (small/medium/large/wide)
+grid-column y grid-row definen cuánto ocupa, en mobile (<1024px) cambia a flex column
+
+animaciones con framer motion:
+initial: estado inicial (opacity 0, y desplazado)
+animate: estado final (opacity 1, y: 0)
+whileinview: se anima cuando entra en vista
+viewport={{ once: true }}: solo se anima una vez
+transition: duración y easing
+
+easing personalizado:
+cubic-bezier(0.22, 1, 0.36, 1), es como un ease-out más suave
+
+
+=== qué falta ===
+
+- reemplazar gradientes con fotos reales
+- conectar formulario de contacto a un numero o mail real
+- agregar proyectos reales con imágenes
+- completar info real de contacto (email, teléfono)
+- agregar fotos del equipo
+- links a redes sociales en footer
+- optimizar imágenes (webp, lazy loading)
+- meta tags para seo
+- google analytics (si quieren)
+
+
+
+cliente: bac estudio - arq. fernanda barrantes
+estilo: minimalismo editorial arquitectónico
+paleta: beiges cálidos y grises suaves
+concepto: calma, orden, profesionalismo
+
+dudas? revisá los comentarios en el código

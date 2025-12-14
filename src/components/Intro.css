@@ -1,0 +1,89 @@
+/* intro - pantalla de carga con logo */
+
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: #FAFAFA;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.intro-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+}
+
+.intro-grid-line {
+  position: absolute;
+  background-color: var(--color-text-title);
+}
+
+.intro-grid-v1 {
+  left: 30%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform-origin: top;
+}
+
+.intro-grid-v2 {
+  right: 30%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform-origin: top;
+}
+
+.intro-grid-h1 {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform-origin: left;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.intro-logo {
+  width: 280px;
+  height: auto;
+  filter: grayscale(0%);
+}
+
+.intro-text {
+  text-align: center;
+}
+
+.intro-text p {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+  font-weight: 500;
+  margin: 0;
+}
+
+.intro-loader {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--color-text-title) 50%, 
+    transparent 100%
+  );
+  transform-origin: left;
+}
