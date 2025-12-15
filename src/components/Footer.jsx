@@ -1,4 +1,5 @@
 import logoBACFooter from '../assets/logoBACFooter.png';
+import logoUXN from '../assets/LogoUXN.png';
 import './Footer.css';
 
 const Footer = () => {
@@ -30,6 +31,16 @@ const Footer = () => {
           <p className="footer-copyright">
             © {new Date().getFullYear()} BAC Estudio. Todos los derechos reservados.
           </p>
+          <a 
+            href="https://www.uxnicorp.com.ar" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="footer-developer"
+          >
+            <span className="footer-developer-label">Hecho por</span>
+            <span className="footer-developer-text">UXnicorp</span>
+            <img src={logoUXN} alt="UXnicorp" className="footer-developer-logo" />
+          </a>
         </div>
       </div>
     </footer>

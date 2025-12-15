@@ -119,14 +119,14 @@ const Projects = () => {
                 key={project.id}
                 className={`project-item project-${project.size}`}
                 layout
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ 
-                  duration: 0.6, 
-                  delay: index * 0.05, 
+                  duration: 0.4, 
+                  delay: index * 0.03, 
                   ease: [0.22, 1, 0.36, 1],
-                  layout: { duration: 0.4 }
+                  layout: { duration: 0.3 }
                 }}
                 onClick={() => setSelectedProject(project)}
               >

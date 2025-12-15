@@ -28,6 +28,12 @@ const Hero = () => {
           animate={{ scaleX: 1 }}
           transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         />
+        <motion.div 
+          className="grid-vertical-secondary"
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 1 }}
+          transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        />
       </div>
 
       <div className="hero-container">
@@ -35,9 +41,9 @@ const Hero = () => {
         <div className="hero-left">
           <motion.h1 
             className="hero-title"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
             Espacios que
             <span className="hero-title-emphasis"> cuentan historias</span>
@@ -45,9 +51,9 @@ const Hero = () => {
 
           <motion.div 
             className="hero-description"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{ duration: 0.7, delay: 0.6 }}
           >
             <div className="hero-line-accent" />
             <div>

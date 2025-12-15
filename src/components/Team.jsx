@@ -73,16 +73,21 @@ const Team = () => {
             <motion.div 
               key={index} 
               className="team-member"
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px", amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
               onClick={() => setSelectedMember(member)}
             >
               <div className="member-visual" />
               <div className="member-info">
-                <h3 className="member-area">{member.name}</h3>
-                <p className="member-role">{member.role}</p>
+                <div className="member-header">
+                  <div>
+                    <h3 className="member-area">{member.name}</h3>
+                    <p className="member-role">{member.role}</p>
+                  </div>
+                  <div className="member-icon">→</div>
+                </div>
                 <p className="member-bio">{member.description}</p>
                 <div className="member-quote">
                   <span className="quote-mark">"</span>

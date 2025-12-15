@@ -20,7 +20,8 @@
 
 .process-header {
   position: sticky;
-  top: 120px;
+  top: 35vh;
+  padding-left: calc(var(--spacing-xl) * 1.5);
 }
 
 .process .section-number {
@@ -64,32 +65,33 @@
   gap: var(--spacing-lg);
   padding: var(--spacing-xl) var(--spacing-lg);
   border: 1px solid var(--color-border);
-  transition: var(--transition-smooth);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   background: var(--color-bg-warm);
   position: relative;
   z-index: 1;
+  box-shadow: var(--shadow-sm);
 }
 
 .process-step:hover {
-  border-color: var(--color-text-light);
-  background: #FFFFFF;
-  transform: translateX(6px);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--color-text-title);
+  border-color: var(--color-text-title);
 }
 
 .step-number-large {
-  font-size: 72px;
-  font-weight: 300;
-  color: rgba(58, 58, 58, 0.18);
+  font-size: 56px;
+  font-weight: 700;
+  font-family: var(--font-family-heading);
+  color: var(--color-text-detail);
   line-height: 1;
   flex-shrink: 0;
-  font-style: italic;
-  text-shadow: 0 0 20px rgba(58, 58, 58, 0.06);
-  transition: all 0.4s ease;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .process-step:hover .step-number-large {
-  color: rgba(58, 58, 58, 0.25);
-  transform: scale(1.05);
+  color: var(--color-bg-warm);
+  opacity: 0.4;
 }
 
 .step-content {
@@ -98,10 +100,15 @@
 
 .step-title {
   font-size: var(--font-size-xl);
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: var(--spacing-sm);
   letter-spacing: -0.5px;
   color: var(--color-text-title);
+  transition: color 0.4s ease;
+}
+
+.process-step:hover .step-title {
+  color: var(--color-bg-warm);
 }
 
 .step-description {
@@ -109,6 +116,11 @@
   line-height: 1.8;
   color: var(--color-text-primary);
   margin: 0;
+  transition: color 0.4s ease;
+}
+
+.process-step:hover .step-description {
+  color: rgba(250, 248, 245, 0.85);
 }
 
 /* ajustes responsive */

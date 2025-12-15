@@ -50,9 +50,7 @@ const Services = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div>
-            <h2 className="section-title-large">Servicios</h2>
-          </div>
+          <h2 className="section-title-large">Servicios</h2>
           <p className="services-intro">
             Ofrecemos una mirada integral del proyecto, desde el concepto inicial hasta su construcción.
           </p>
@@ -63,10 +61,10 @@ const Services = () => {
             <motion.div 
               key={index} 
               className="service-item"
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, margin: "-50px", amount: 0.3 }}
+              transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="service-number">{String(index + 1).padStart(2, '0')}</div>
               <div className="service-content">

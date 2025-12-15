@@ -24,20 +24,21 @@
 }
 
 .services-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: var(--spacing-2xl);
-  padding-bottom: var(--spacing-xl);
-  border-bottom: 1px solid var(--color-border);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--spacing-3xl);
+}
+
+.section-title-large {
+  margin-bottom: var(--spacing-md);
 }
 
 .services-intro {
-  max-width: 450px;
   font-size: var(--font-size-lg);
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--color-text-primary);
-  margin: 0;
+  margin: 0 auto;
+  max-width: 600px;
 }
 
 .services-list {
@@ -51,72 +52,60 @@
   background-color: var(--color-bg-warm);
   padding: var(--spacing-2xl);
   display: flex;
-  gap: var(--spacing-lg);
-  transition: var(--transition-smooth);
+  flex-direction: column;
+  gap: var(--spacing-md);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
+  box-shadow: var(--shadow-sm);
 }
 
-.service-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 100%;
-  height: 100%;
-  background-color: #4A4745;
-  transition: right 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-  z-index: 0;
-}
-
-.service-item:hover::before {
-  right: 0;
-}
-
-.service-item:hover .service-number,
-.service-item:hover .service-name,
-.service-item:hover .service-text {
-  color: var(--color-bg-warm);
-  position: relative;
-  z-index: 1;
+.service-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--color-text-title);
 }
 
 .service-number {
-  font-size: 72px;
-  font-weight: 300;
-  color: var(--color-border);
+  font-size: 56px;
+  font-weight: 700;
+  font-family: var(--font-family-heading);
+  color: var(--color-text-detail);
   line-height: 1;
-  font-style: italic;
-  flex-shrink: 0;
-  width: 100px;
-  transition: var(--transition-smooth);
-  position: relative;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  align-self: flex-start;
 }
 
 .service-item:hover .service-number {
-  transform: scale(1.1) rotate(-3deg);
   color: var(--color-bg-warm);
+  opacity: 0.4;
 }
 
 .service-content {
   flex: 1;
-  position: relative;
-  z-index: 1;
 }
 
 .service-name {
-  font-size: var(--font-size-2xl);
-  font-weight: 500;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
   margin-bottom: var(--spacing-sm);
   letter-spacing: -0.5px;
-  transition: var(--transition-smooth);
+  transition: color 0.4s ease;
+}
+
+.service-item:hover .service-name {
+  color: var(--color-bg-warm);
 }
 
 .service-text {
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.8;
   color: var(--color-text-primary);
   margin: 0;
-  transition: var(--transition-smooth);
+  transition: color 0.4s ease;
+}
+
+.service-item:hover .service-text {
+  color: rgba(250, 248, 245, 0.85);
 }
 
 /* ajustes responsive */

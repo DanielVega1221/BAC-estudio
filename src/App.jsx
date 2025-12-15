@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import About from './components/About';
 import Statement from './components/Statement';
 import Process from './components/Process';
 import Services from './components/Services';
@@ -22,6 +23,7 @@ function App() {
       <Header />
       <main>
         <Hero />
+        <About />
         <Statement />
         <Process />
         <Services />

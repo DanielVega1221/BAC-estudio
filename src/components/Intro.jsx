@@ -42,7 +42,25 @@ const Intro = ({ onComplete }) => {
               className="intro-grid-line intro-grid-h1"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            />
+            <motion.div 
+              className="intro-grid-line intro-grid-v3"
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 1 }}
+              transition={{ duration: 1.1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            />
+            <motion.div 
+              className="intro-grid-line intro-grid-h2"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1.3, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            />
+            <motion.div 
+              className="intro-grid-line intro-grid-h3"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1.2, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
             />
           </div>
 

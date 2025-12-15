@@ -23,18 +23,21 @@ src/
     Intro.jsx/css        -> pantalla de carga inicial con logo
     Header.jsx/css       -> navbar de arriba (con scroll progress)
     Hero.jsx/css         -> sección grande de entrada full screen
+    About.jsx/css        -> quiénes somos (logo, ubicación, info del estudio)
     Statement.jsx/css    -> frase editorial ("procesos compartidos")
-    Process.jsx/css      -> cómo trabajamos (4 pasos)
+    Process.jsx/css      -> cómo trabajamos (4 pasos con hover oscuro)
     Services.jsx/css     -> servicios (arquitectura, ingeniería, etc)
     Projects.jsx/css     -> grid bento con los proyectos
     Team.jsx/css         -> equipo con frases en hover
-    Contact.jsx/css      -> formulario y datos de contacto
+    Contact.jsx/css      -> formulario en card con líneas decorativas
     Footer.jsx/css       -> pie de página
     ProjectModal.jsx/css -> ventana emergente de proyectos
+    TeamModal.jsx/css    -> ventana emergente del equipo
     BackToTop.jsx/css    -> botón para volver arriba
 
   assets/
     logoBAC.png          -> logo del estudio
+    logoBACFooter.png    -> logo para footer y about
 
 
 
@@ -47,27 +50,30 @@ src/
    navbar con links, logo que te lleva arriba, barra de progreso que crece, links activos según qué sección estás viendo
 
 3. hero (pantalla completa)
-   título grande "espacios que cuentan historias", imágenes con parallax, líneas decorativas que se cruzan, indicador scroll animado
+   título grande "espacios que cuentan historias", imágenes con parallax, líneas decorativas que se cruzan, indicador scroll animado (oculto en mobile)
 
-4. statement (frase editorial)
+4. about (quiénes somos)
+   layout 2 columnas: logo + info (ubicación, especialidades, enfoque) | statement con quote + descripción, líneas decorativas sutiles
+
+5. statement (frase editorial)
    "no diseñamos solo espacios. diseñamos procesos compartidos" con línea que crece y texto grande centrado
 
-5. process (cómo trabajamos)
-   4 pasos numerados, título sticky que se queda pegado, cada paso se anima cuando entra
+6. process (cómo trabajamos)
+   4 pasos numerados, título sticky posicionado en 35vh, hover oscuro igual a services, cada paso se anima cuando entra
 
-6. services (servicios)
-   grid 2x2 con hover, arquitectura/ingeniería/agrimensura/obra, cards crecen al pasar mouse
+7. services (servicios)
+   grid 2x2 con hover oscuro, arquitectura/ingeniería/agrimensura/obra, cards cambian a fondo negro con texto beige
 
-7. projects (proyectos)
+8. projects (proyectos)
    grid bento asimétrico tipo pinterest, filtros arriba, click abre modal, en mobile es columna simple
 
-8. team (equipo)
-   cards horizontales con foto, hover muestra frase personal, click abre modal
+9. team (equipo)
+   cards con depth effect (sombras y halo), sin números, flechas en hover, click abre modal
 
-9. contact (formulario)
-   form de contacto + info a la izquierda, por ahora solo simula envío (falta backend)
+11. footer
+    logo, ubicación, email, links redes, copyright
 
-10. footer
+12. footer
     logo, ubicación, email, links redes, copyright
 
 11. back to top (flotante)
@@ -80,13 +86,15 @@ src/
 - intersection observer: detecta qué sección estás mirando
 - scroll progress bar: ves cuánto falta
 - active navbar states: marca el link actual
-- framer motion: todo entra suave
+- framer motion: todo entra suave con animaciones al scroll
 - grid bento con filtros: proyectos se reorganizan solos
-- hover quotes en team: frases aparecen al pasar mouse
+- hover effects: services y process con fondo oscuro, team con depth/halo
 - modales con animatePresence: ventanas emergentes suaves
 - back to top: volver arriba desde cualquier lado
-- sticky header: navbar siempre visible
-- responsive completo: funciona en todas las pantallas
+- sticky elements: navbar siempre visible, process header sticky en 35vh
+- responsive completo: funciona en todas las pantallas con breakpoints 1024/768/480px
+- líneas decorativas: múltiples capas con gradientes sutiles en hero, intro, about
+- scroll indicator oculto: no se muestra en tablets ni móviles
 
 
 === variables importantes (src/App.css) ===
@@ -111,9 +119,9 @@ todo usa inter de google fonts
 clamp() para tamaños fluidos (responsive automático)
 
 
-=== responsive breakpoints ===
-
-1024px: tablets horizontal, todo sigue en 2 columnas
+=== responsive breakpoints =about pasa a 1 columna, info-grid 3 columnas
+768px: tablets vertical, projects/services/contact a 1 columna, scroll indicator oculto
+480px: móviles, títulos 32-38px, container-padding 24px, todas las grids 1 columna, líneas decorativas ocultamnas
 768px: tablets vertical, algunas cosas pasan a 1 columna
 480px: móviles, todo 1 columna, textos más chicos
 
@@ -128,21 +136,29 @@ imágenes:
 hero: cambiar background de .hero-image-main y .hero-image-accent en hero.css
 projects: cambiar background de cada .project-item en projects.css
 team: cambiar background de cada .member-visual en team.css
+about: logo importado desde assets/logoBACFooter.png con mix-blend-mode multiply
 por ahora son gradientes, reemplazar con: background-image: url('ruta')
 
 colores:
 todo se maneja desde las variables en app.css, cambiar un color ahí lo cambia en toda la página
+contact tiene fondo #4A4745 (gris oscuro), about usa color-bg-alternate #F5F3F0
 
 proyectos:
 array "projects" en projects.jsx, agregar/quitar objetos
-cada proyecto tiene: id, title, category, year, location, size
+cada proyecto tiene: id, title, category, location, size
 
 equipo:
 array "team" en team.jsx
 cada miembro tiene: name, role, quote, description
-quote es la frase que aparece en hover
+quote es la frase que aparece en hover, cards con depth effect (shadow + halo)
+
+about:
+info del estudio está en about.jsx: ubicación, especialidades, enfoque
+statement con quote mark decorativo, layout 2 columnas (380px sidebar + flexible)
 
 formulario de contacto:
+form centrado en card (max-width 900px), líneas verticales beige en bordes
+campos: nombre, email, teléfono, tipo de proyecto, mensaje
 por ahora solo hace console.log, hay que conectar con backend tipo emailjs o formspree
 
 
@@ -164,34 +180,25 @@ grid bento en projects:
 css grid con grid-auto-flow: dense, cada proyecto tiene clase de tamaño (small/medium/large/wide)
 grid-column y grid-row definen cuánto ocupa, en mobile (<1024px) cambia a flex column
 
-animaciones con framer motion:
-initial: estado inicial (opacity 0, y desplazado)
-animate: estado final (opacity 1, y: 0)
-whileinview: se anima cuando entra en vista
-viewport={{ once: true }}: solo se anima una vez
-transition: duración y easing
-
-easing personalizado:
-cubic-bezier(0.22, 1, 0.36, 1), es como un ease-out más suave
 
 
-=== qué falta ===
-
-- reemplazar gradientes con fotos reales
-- conectar formulario de contacto a un numero o mail real
-- agregar proyectos reales con imágenes
-- completar info real de contacto (email, teléfono)
-- agregar fotos del equipo
-- links a redes sociales en footer
-- optimizar imágenes (webp, lazy loading)
-- meta tags para seo
-- google analytics (si quieren)
-
-
-
-cliente: bac estudio - arq. fernanda barrantes
+ubicación: chilecito, la rioja - catamarca
 estilo: minimalismo editorial arquitectónico
-paleta: beiges cálidos y grises suaves
+paleta: beiges cálidos (#FAF8F5, #F5F3F0) y grises suaves (#3A3A3A, #6B6B6B)
+acentos: contact fondo #4A4745 (gris oscuro)
+concepto: calma, orden, profesionalismo, sobriedad
+
+tipografía:
+- roboto (body): 300, 400, 500
+- lato bold (headings): 700
+
+efectos clave:
+- hover oscuro en services/process (fondo negro, texto beige)
+- depth con sombras y halos en team
+- parallax sutil en hero
+- líneas decorativas con gradientes múltiples
+- animaciones suaves con framer motion
+
 concepto: calma, orden, profesionalismo
 
 dudas? revisá los comentarios en el código
