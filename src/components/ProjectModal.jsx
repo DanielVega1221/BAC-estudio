@@ -38,8 +38,8 @@ const ProjectModal = ({ project, onClose }) => {
           </button>
 
           <div className="modal-body">
-            <div className="modal-visual">
-              <div className="modal-image-placeholder" />
+            <div className="modal-visual" style={{ backgroundImage: `url(${project.image})` }}>
+              <div className="modal-image-overlay" />
             </div>
 
             <div className="modal-info">
@@ -56,59 +56,46 @@ const ProjectModal = ({ project, onClose }) => {
               <div className="modal-story">
                 <div className="story-intro">
                   <p className="story-lead">
-                    Un proyecto pensado desde la escucha, donde cada detalle responde 
-                    a la forma de habitar y las necesidades reales del cliente.
+                    {project.lead}
                   </p>
                 </div>
 
                 <h3 className="story-title">El desafío</h3>
                 <p className="story-text">
-                  El cliente buscaba un espacio que equilibrara privacidad y conexión 
-                  con el entorno. La topografía presentaba desafíos interesantes que 
-                  convertimos en oportunidades: aprovechamos las visuales, respetamos 
-                  la vegetación existente y diseñamos una implantación que dialogara 
-                  naturalmente con el terreno.
+                  {project.challenge}
                 </p>
 
                 <h3 className="story-title">La propuesta</h3>
                 <p className="story-text">
-                  El diseño propone volúmenes simples y puros, con una materialidad 
-                  honesta que envejece con dignidad. Los espacios interiores se organizan 
-                  buscando fluidez y flexibilidad, permitiendo que la luz natural recorra 
-                  toda la planta. La estructura expuesta se convierte en parte del lenguaje 
-                  arquitectónico.
+                  {project.proposal}
                 </p>
 
                 <h3 className="story-title">El resultado</h3>
                 <p className="story-text">
-                  Un espacio contemporáneo que se integra a su contexto sin imponerse. 
-                  La arquitectura se retira para dar protagonismo a la vida que sucede 
-                  dentro. Cada ambiente fue pensado para acompañar los rituales cotidianos 
-                  con la calidez y funcionalidad que el habitar requiere.
+                  {project.result}
                 </p>
 
                 <div className="story-details">
                   <div className="detail-item">
                     <span className="detail-label">Superficie</span>
-                    <span className="detail-value">180 m²</span>
+                    <span className="detail-value">{project.surface}</span>
                   </div>
                   <div className="detail-item">
                     <span className="detail-label">Año</span>
-                    <span className="detail-value">2024</span>
+                    <span className="detail-value">{project.year}</span>
                   </div>
                   <div className="detail-item">
                     <span className="detail-label">Duración</span>
-                    <span className="detail-value">14 meses</span>
+                    <span className="detail-value">{project.duration}</span>
                   </div>
                 </div>
 
                 <div className="story-services">
                   <h4 className="services-title">Servicios desarrollados</h4>
                   <ul className="services-list">
-                    <li>Anteproyecto y proyecto ejecutivo</li>
-                    <li>Cálculo estructural y cómputos</li>
-                    <li>Dirección técnica de obra</li>
-                    <li>Asesoramiento en materialidad</li>
+                    {project.services && project.services.map((service, index) => (
+                      <li key={index}>{service}</li>
+                    ))}
                   </ul>
                 </div>
 

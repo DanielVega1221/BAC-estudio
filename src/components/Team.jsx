@@ -3,6 +3,10 @@ import { useState } from 'react';
 import TeamModal from './TeamModal';
 import './Team.css';
 
+import teamImg1 from '../assets/imagenEquipo1.jpg';
+import teamImg2 from '../assets/imagenEquipo2.jpg';
+import teamImg3 from '../assets/imagenEquipo3.png';
+
 const Team = () => {
   const [selectedMember, setSelectedMember] = useState(null);
   
@@ -10,26 +14,23 @@ const Team = () => {
     {
       name: "Arq. Fernanda Barrantes",
       role: "Arquitecta",
+      image: teamImg1,
       description: "Fundadora del estudio. Especializada en diseño residencial y espacios comerciales con enfoque en la integración sensible entre arquitectura y contexto. Apasionada por el acompañamiento cercano a cada cliente.",
       quote: "Me gusta pensar la arquitectura desde lo que se habita, no desde lo que se muestra."
     },
     {
       name: "Ing. Laura Mercado",
       role: "Ingeniera Civil",
+      image: teamImg2,
       description: "Responsable del desarrollo técnico y estructural. Aporta soluciones constructivas innovadoras garantizando viabilidad y calidad en cada proyecto. Su experiencia asegura el éxito en la ejecución.",
       quote: "La estructura no es lo que se ve. Es lo que permite que todo lo demás suceda."
     },
     {
       name: "Agrim. Carolina Vargas",
       role: "Ingeniera en Agrimensura",
+      image: teamImg3,
       description: "Encargada de relevamientos y documentación técnica del territorio. Trabaja con precisión y rigor profesional, asegurando que cada medición sea la base sólida de nuestros proyectos.",
       quote: "Cada medida cuenta una historia del lugar. Mi trabajo es escucharla con precisión."
-    },
-    {
-      name: "Arq. Sofía Romero",
-      role: "Dirección de Obra",
-      description: "Coordina y supervisa la ejecución en obra. Su presencia en terreno garantiza que cada proyecto se materialice con la calidad esperada, respetando tiempos y manteniendo comunicación fluida con los clientes.",
-      quote: "En obra no construimos planos. Construimos confianza, día a día."
     }
   ];
 
@@ -79,7 +80,10 @@ const Team = () => {
               transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
               onClick={() => setSelectedMember(member)}
             >
-              <div className="member-visual" />
+              <div 
+                className="member-visual"
+                style={{ backgroundImage: `url(${member.image})` }}
+              />
               <div className="member-info">
                 <div className="member-header">
                   <div>

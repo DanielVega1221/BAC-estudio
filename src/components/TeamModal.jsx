@@ -38,8 +38,11 @@ const TeamModal = ({ member, onClose }) => {
           </button>
 
           <div className="modal-body">
-            <div className="modal-visual modal-visual-team">
-              <div className="modal-photo-placeholder" />
+            <div 
+              className="modal-visual modal-visual-team"
+              style={{ backgroundImage: `url(${member.image})` }}
+            >
+              <div className="modal-image-overlay" />
             </div>
 
             <div className="modal-info">

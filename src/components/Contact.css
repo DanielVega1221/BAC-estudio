@@ -53,7 +53,7 @@
   gap: var(--spacing-xl);
   max-width: 900px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.05);
+  background: #5A5755;
   padding: calc(var(--spacing-2xl) * 1.8) calc(var(--spacing-2xl) * 2);
   border: 1px solid rgba(255, 255, 255, 0.15);
   position: relative;

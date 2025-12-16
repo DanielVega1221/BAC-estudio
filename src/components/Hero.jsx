@@ -2,6 +2,9 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import './Hero.css';
 
+import heroImg1 from '../assets/imagenHero1.jpg';
+import heroImg2 from '../assets/imagenHero2.jpg';
+
 const Hero = () => {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -73,9 +76,10 @@ const Hero = () => {
           style={{ y: imageY }}
         >
           <div className="hero-image-frame">
-            <div className="hero-image-main" />
+            <div className="hero-image-main" style={{ backgroundImage: `url(${heroImg1})` }} />
             <motion.div 
               className="hero-image-accent"
+              style={{ backgroundImage: `url(${heroImg2})` }}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 1 }}

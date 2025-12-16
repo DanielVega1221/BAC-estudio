@@ -21,9 +21,11 @@
   max-width: 1200px;
   width: 100%;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: hidden;
   border-radius: 0;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-close {
@@ -42,8 +44,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  z-index: 10;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 10001;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -58,42 +60,41 @@
 .modal-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 600px;
+  height: 100%;
+  overflow: hidden;
 }
 
 .modal-visual {
-  background: linear-gradient(135deg, #EDEBE7 0%, #D4D2CE 100%);
-  position: relative;
-  min-height: 600px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: sticky;
+  top: 0;
+  height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  align-self: start;
 }
 
-.modal-image-placeholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #C5C3BF 0%, #A8A6A2 100%);
-  position: relative;
-}
-
-.modal-image-placeholder::after {
-  content: 'Imagen del proyecto';
+.modal-image-overlay {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 14px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  background: linear-gradient(135deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  z-index: 1;
 }
 
 .modal-info {
   padding: var(--spacing-3xl) var(--spacing-2xl);
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  height: 90vh;
 }
 
 .modal-meta {
@@ -227,27 +228,8 @@
 }
 
 .modal-visual-team {
-  background: linear-gradient(135deg, #8B8986 0%, #6B6B6B 100%);
-}
-
-.modal-photo-placeholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #6B6B6B 0%, #4A4745 100%);
-  position: relative;
-}
-
-.modal-photo-placeholder::after {
-  content: 'Foto del equipo';
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 14px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  background-size: cover;
+  background-position: center;
 }
 
 .modal-role {
